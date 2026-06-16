@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva | Thiffany Brand</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .checkout-section {
+            padding-top: 150px;
+            padding-bottom: 100px;
+        }
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+        }
+        .checkout-form-panel {
+            background: var(--bg);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+        .checkout-form-panel h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: #fafafa;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+        }
+        .checkout-summary-panel {
+            background: var(--neutral);
+            padding: 40px;
+            border-radius: var(--radius);
+            height: fit-content;
+        }
+        .checkout-summary-panel h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 16px;
+        }
+        .summary-items {
+            margin-bottom: 24px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .summary-item-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .summary-item-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .summary-item-price {
+            font-weight: 600;
+        }
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--primary);
+        }
+        .btn-whatsapp {
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            padding: 18px;
+            font-size: 1.1rem;
+        }
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            color: white;
+        }
+        
+        @media (max-width: 1024px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .checkout-section {
+                padding-top: 120px;
+            }
+            .checkout-form-panel, .checkout-summary-panel {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" style="background: var(--bg); position: fixed; box-shadow: var(--shadow-sm); padding: 16px 0;">
+        <div class="container">
+            <a href="index.html" class="navbar-brand"><img src="assets/logo.png" alt="Thiffany Brand Logo"></a>
+            <div class="nav-links">
+                <a href="index.html#inicio">Início</a>
+                <a href="index.html#colecoes">Coleções</a>
+                <a href="index.html#novidades">Novidades</a>
+            </div>
+            <div class="nav-actions">
+                <button class="cart-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="checkout-section container fade-up visible">
+        <div class="checkout-grid">
+            <div class="checkout-form-panel">
+                <h2>Seus Dados</h2>
+                <form id="reservation-form">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp *</label>
+                        <input type="tel" id="whatsapp" class="form-control" placeholder="+55 00 00000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-control">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div class="form-group">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <input type="text" id="estado" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pais">País *</label>
+                        <select id="pais" class="form-control" required>
+                            <option value="">Selecione...</option>
+                            <option value="Brasil">Brasil</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Espanha">Espanha</option>
+                            <option value="França">França</option>
+                            <option value="Itália">Itália</option>
+                            <option value="Estados Unidos">Estados Unidos</option>
+                            <option value="Canadá">Canadá</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="obs">Observações</label>
+                        <textarea id="obs" class="form-control" rows="4" placeholder="Alguma observação importante para a entrega ou sobre o pedido?"></textarea>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="checkout-summary-panel">
+                <h3>Resumo do Pedido</h3>
+                <div class="summary-items" id="summary-items">
+                    <!-- Loaded via JS -->
+                </div>
+                <div class="summary-total">
+                    <span>Total:</span>
+                    <span id="summary-total-price">R$ 0,00</span>
+                </div>
+                <button type="button" class="btn btn-whatsapp" onclick="sendReservation()">Enviar Reserva pelo WhatsApp</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html#inicio">
+                        <img src="assets/logo.png" alt="Thiffany Brand Logo" class="footer-logo">
+                    </a>
+                    <p>Sua Melhor Versão.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#colecoes">Coleções</a></li>
+                        <li><a href="index.html#novidades">Novidades</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>WhatsApp: (84) 9999-9999</p>
+                    <p>contato@thiffanybrand.com.br</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Localização</h4>
+                    <p>Natal/RN - Brasil</p>
+                    <p>Segunda a Sábado - 09h às 18h</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Thiffany Brand. Todos os direitos reservados.</p>
+                <p>Desenvolvido por Rodrigo Miranda</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay"></div>
+    <div id="cart-drawer">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <button id="cart-close">✕</button>
+        </div>
+        <div class="cart-body" id="cart-drawer-items"></div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span id="cart-drawer-total">R$ 0,00</span>
+            </div>
+            <button class="btn btn-primary" onclick="closeCartDrawer()" style="width: 100%;">Fechar Carrinho</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSummary();
+            
+            // Override updateCartUI to also update the summary when changes happen in the cart drawer
+            const originalUpdateCartUI = window.updateCartUI;
+            window.updateCartUI = function() {
+                originalUpdateCartUI();
+                renderSummary();
+            };
+        });
+
+        function renderSummary() {
+            const container = document.getElementById('summary-items');
+            if (!container) return;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color: #888;">Seu carrinho está vazio.</p>';
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="summary-item">
+                        <div>
+                            <div class="summary-item-title">${item.quantity}x ${item.name}</div>
+                            <div class="summary-item-details">Tamanho: ${item.size}</div>
+                        </div>
+                        <div class="summary-item-price">R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</div>
+                    </div>
+                `).join('');
+            }
+            
+            document.getElementById('summary-total-price').textContent = `R$ ${getCartTotal().toFixed(2).replace('.', ',')}`;
+        }
+
+        function sendReservation() {
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio! Adicione produtos antes de fazer a reserva.');
+                return;
+            }
+
+            const nome = document.getElementById('nome').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const cidade = document.getElementById('cidade').value.trim();
+            const estado = document.getElementById('estado').value.trim();
+            const pais = document.getElementById('pais').value;
+            const obs = document.getElementById('obs').value.trim();
+
+            if (!nome || !whatsapp || !pais) {
+                alert('Por favor, preencha os campos obrigatórios (Nome, WhatsApp e País).');
+                return;
+            }
+
+            let msg = 'Olá!\n\nGostaria de reservar os seguintes produtos:\n\n';
+            
+            cart.forEach(item => {
+                msg += `🛍️ ${item.name}\nTamanho: ${item.size}\nQuantidade: ${item.quantity}\n\n`;
+            });
+
+            msg += `Subtotal: R$ ${getCartTotal().toFixed(2).replace('.', ',')}\n\n`;
+            
+            msg += 'Dados da cliente:\n';
+            msg += `Nome: ${nome}\n`;
+            msg += `WhatsApp: ${whatsapp}\n`;
+            if (email) msg += `Email: ${email}\n`;
+            if (cidade || estado) {
+                msg += `Local: ${[cidade, estado].filter(Boolean).join(' - ')}\n`;
+            }
+            msg += `País: ${pais}\n\n`;
+
+            if (obs) {
+                msg += `Observações:\n${obs}\n\n`;
+            }
+
+            msg += 'Aguardo confirmação de disponibilidade.';
+
+            const encodedMsg = encodeURIComponent(msg);
+            const waUrl = `https://wa.me/5584988437293?text=${encodedMsg}`;
+            
+            window.open(waUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

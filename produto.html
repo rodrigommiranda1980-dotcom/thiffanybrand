@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto | Thiffany Brand</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .product-detail-section {
+            padding-top: 150px;
+            padding-bottom: 100px;
+        }
+        .product-gallery {
+            grid-column: span 6;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .product-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .product-info-panel {
+            grid-column: span 6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .product-info-panel h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        .product-info-panel .price {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .product-info-panel p.desc {
+            color: #555;
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+        .selector-group {
+            margin-bottom: 24px;
+        }
+        .selector-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .sizes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .size-btn {
+            background: var(--neutral);
+            border: 1px solid #ddd;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .size-btn.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .quantity-controls button {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: var(--neutral);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .quantity-controls span {
+            font-weight: 600;
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+        }
+        .add-to-cart-btn {
+            width: 100%;
+            margin-top: 32px;
+            padding: 18px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .product-gallery, .product-info-panel {
+                grid-column: span 8;
+            }
+        }
+        @media (max-width: 768px) {
+            .product-gallery, .product-info-panel {
+                grid-column: span 4;
+            }
+            .product-detail-section {
+                padding-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" style="background: var(--bg); position: fixed; box-shadow: var(--shadow-sm); padding: 16px 0;">
+        <div class="container">
+            <a href="index.html" class="navbar-brand"><img src="assets/logo.png" alt="Thiffany Brand Logo"></a>
+            <div class="nav-links">
+                <a href="index.html#inicio">Início</a>
+                <a href="index.html#colecoes">Coleções</a>
+                <a href="index.html#novidades">Novidades</a>
+                <a href="checkout.html" class="mobile-only">Finalizar Reserva</a>
+            </div>
+            <div class="nav-actions">
+                <button class="cart-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+                <a href="checkout.html" class="btn btn-primary desktop-only">Finalizar</a>
+                <button class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="product-detail-section container">
+        <div class="grid-12" id="product-container">
+            <!-- Content loaded via JS -->
+            <div style="grid-column: span 12; text-align: center; padding: 100px 0;">
+                Carregando produto...
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html#inicio">
+                        <img src="assets/logo.png" alt="Thiffany Brand Logo" class="footer-logo">
+                    </a>
+                    <p>Sua Melhor Versão.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#colecoes">Coleções</a></li>
+                        <li><a href="index.html#novidades">Novidades</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>WhatsApp: (84) 9999-9999</p>
+                    <p>contato@thiffanybrand.com.br</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Localização</h4>
+                    <p>Natal/RN - Brasil</p>
+                    <p>Segunda a Sábado - 09h às 18h</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Thiffany Brand. Todos os direitos reservados.</p>
+                <p>Desenvolvido por Rodrigo Miranda</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay"></div>
+    <div id="cart-drawer">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <button id="cart-close">✕</button>
+        </div>
+        <div class="cart-body" id="cart-drawer-items"></div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span id="cart-drawer-total">R$ 0,00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary">Continuar Reserva</a>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const product = productsDB.find(p => p.id === productId);
+            const container = document.getElementById('product-container');
+
+            if (!product) {
+                container.innerHTML = '<div style="grid-column: span 12; text-align: center;"><h2>Produto não encontrado.</h2><br><a href="index.html" class="btn btn-primary">Voltar à loja</a></div>';
+                return;
+            }
+
+            document.title = `${product.name} | Thiffany Brand`;
+
+            container.innerHTML = `
+                <div class="product-gallery fade-up">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="product-info-panel fade-up" style="transition-delay: 0.1s;">
+                    <h1>${product.name}</h1>
+                    <div class="price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
+                    <p class="desc">${product.description}</p>
+                    
+                    <div class="selector-group">
+                        <label>Tamanho</label>
+                        <div class="sizes-grid">
+                            ${product.sizes.map((s, i) => `<button class="size-btn ${i === 0 ? 'selected' : ''}" onclick="selectSize(this, '${s}')">${s}</button>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="selector-group">
+                        <label>Quantidade</label>
+                        <div class="quantity-controls">
+                            <button onclick="changeQty(-1)">-</button>
+                            <span id="qty-display">1</span>
+                            <button onclick="changeQty(1)">+</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary add-to-cart-btn" onclick="handleAddToCart()">Adicionar ao Carrinho</button>
+                </div>
+            `;
+            
+            // Re-trigger observer for new elements
+            const fadeElements = document.querySelectorAll('.fade-up');
+            fadeElements.forEach(el => el.classList.add('visible'));
+        });
+
+        let currentSize = 'M';
+        let currentQty = 1;
+
+        function selectSize(btn, size) {
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            currentSize = size;
+        }
+
+        function changeQty(change) {
+            currentQty += change;
+            if (currentQty < 1) currentQty = 1;
+            document.getElementById('qty-display').textContent = currentQty;
+        }
+
+        function handleAddToCart() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const product = productsDB.find(p => p.id === urlParams.get('id'));
+            if (product) {
+                addToCart(product, currentSize, currentQty);
+            }
+        }
+    </script>
+</body>
+</html>
