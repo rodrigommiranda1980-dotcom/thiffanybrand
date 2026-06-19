@@ -15,11 +15,13 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-sm);
+            height: 650px;
         }
         .product-gallery img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top;
             display: block;
         }
         .product-info-panel {
@@ -107,10 +109,16 @@
             .product-gallery, .product-info-panel {
                 grid-column: span 8;
             }
+            .product-gallery {
+                height: 500px;
+            }
         }
         @media (max-width: 768px) {
             .product-gallery, .product-info-panel {
                 grid-column: span 4;
+            }
+            .product-gallery {
+                height: 450px;
             }
             .product-detail-section {
                 padding-top: 120px;
